@@ -1,6 +1,6 @@
 #pragma once
 class Ssd {
-public:
-	void write();
-	void read();
+	public:
+		void write();
+		void read();
 };
