@@ -1,6 +1,9 @@
 #pragma once
 #include "ssd.h"
 
+#include <vector>
+#include <string>
+
 template <typename T>
 class TestShellApplication {
 private:
@@ -18,3 +21,5 @@ public:
 	TestShellApplication(const TestShellApplication& copy) = delete;
 	TestShellApplication operator=(const TestShellApplication& src) = delete;
 };
+
+std::vector<std::string> split(std::string str, char Delimiter);
