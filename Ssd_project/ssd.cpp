@@ -17,7 +17,7 @@ void SSD<uint32_t>::write(uint32_t index, uint32_t input_data) {
 		std::cerr << "Failed to open the file." << std::endl;
 	}
 	SSD_file.close();
-	std::cout << "WRITE" << std::endl;
+	//std::cout << "WRITE" << std::endl;
 }
 
 //template <typename T> 
@@ -40,19 +40,26 @@ void SSD<uint32_t>::read(uint32_t index) {
 	}
 	//벡터에서 필요한 데이터 추출
 	//std::cout << "vect size is " << ssd_memory.size() << std::endl;
-	data_required = ssd_memory[index];
-	//result.txt에 해당 데이터 저장
-	if (result_file.is_open()) {
-		result_file << data_required << std::endl;
-		std::cout << "Result: " << data_required << std::endl;
+	if (index < 100) {
+		data_required = ssd_memory[index];
+		//result.txt에 해당 데이터 저장
+		if (result_file.is_open()) {
+			result_file << data_required << std::endl;
+			std::cout << "Result: " << data_required << std::endl;
+		}
+		else {
+			std::cerr << "Failed to open the file." << std::endl;
+		}
 	}
 	else {
-		std::cerr << "Failed to open the file." << std::endl;
+		std::cerr << "Index over 100" << std::endl;
 	}
+	
+	
 	result_file.close();
 	SSD_file.close();
 
-	std::cout << "READ" << std::endl;
+	//std::cout << "READ" << std::endl;
 
 	
 }

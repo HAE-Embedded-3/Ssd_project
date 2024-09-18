@@ -34,13 +34,21 @@ class SSD : public Storage<T> {
       //SSD 초기화 txt파일 위치 주소 받아서 생성/저장/불러오기
       SSD() : ssd_memory{} {
         //파일 생성 (만약 기존 파일 존재 한다면 이어서 수정됨
-        std::fstream SSD_file("nand.txt", std::ios::in | std::ios::out | std::ios::app);
-        std::fstream result_file("result.txt", std::ios::in | std::ios::out | std::ios::app);
+        //std::fstream SSD_file("nand.txt", std::ios::in | std::ios::out | std::ios::app);
+        //std::fstream result_file("result.txt", std::ios::in | std::ios::out | std::ios::app);
+        
 
-        //초기 상태 설정으로 수정할 것
-        SSD_file << "HELLO WORLD!!!" << std::endl;
-        result_file << "RESULT!!!" << std::endl;
+        //덮어쓰기식 생성
+        std::ofstream SSD_file("nand.txt");
+        std::ofstream result_file("result.txt");
+
+        //초기 상태 설정으로 수정할 것 0x00000
+        for (int i = 0; i < 100; i++) {
+            write(i, 0x00000000);
+        }
         //파일 종료
+        SSD_file.close();
+        result_file.close();
         }
     void write(uint32_t index, T data);
     void read(uint32_t index);

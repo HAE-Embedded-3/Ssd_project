@@ -1,31 +1,104 @@
-HELLO WORLD!!!
-HELLO WORLD!!!
-HELLO WORLD!!!
-HELLO WORLD!!!
-35
-HELLO WORLD!!!
 0
-HELLO WORLD!!!
 0
-HELLO WORLD!!!
-35
-HELLO WORLD!!!
-35
-HELLO WORLD!!!
-35
-HELLO WORLD!!!
-35
-HELLO WORLD!!!
-35
-HELLO WORLD!!!
-35
-HELLO WORLD!!!
-35
-HELLO WORLD!!!
-35
-HELLO WORLD!!!
-365
-HELLO WORLD!!!
-365
-HELLO WORLD!!!
-365
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+1
+2
+3
+4
