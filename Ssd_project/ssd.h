@@ -29,7 +29,7 @@ class SSD : public Storage<T> {
     std::vector<T> ssd_memory;
     //txt파일 위치 주소
     //const std::string ssd_addr; -> 현재 위치에 자동으로 생성되게 만들것 (상대경로)
-
+    
   public:
       //SSD 초기화 txt파일 위치 주소 받아서 생성/저장/불러오기
       SSD() : ssd_memory{} {
@@ -40,12 +40,8 @@ class SSD : public Storage<T> {
         //초기 상태 설정으로 수정할 것
         SSD_file << "HELLO WORLD!!!" << std::endl;
         result_file << "RESULT!!!" << std::endl;
-
         //파일 종료
-        SSD_file.close();
-        result_file.close();
-
-    }
+        }
     void write(uint32_t index, T data);
     void read(uint32_t index);
 
