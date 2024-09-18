@@ -22,16 +22,26 @@ void SSD<uint32_t>::write(uint32_t index, uint32_t input_data) {
 
 //template <typename T> 
 void SSD<uint32_t>::read(uint32_t index) {
+	//파일 열기 result.txt 쓰기 전용 nand.txt읽기전용
 	std::ofstream result_file("result.txt");
 	std::ifstream SSD_file("nand.txt");
+
+	//데이터 읽기
+	std::string read_data;
 	std::string data_required;
+	//벡터에 저장
 	if (SSD_file.is_open()) {
-		std::getline(SSD_file, data_required);
-		std::cout << data_required << std::endl;
+		while (std::getline(SSD_file, read_data)) {
+			ssd_memory.push_back(read_data);
+		}
 	}
 	else {
 		std::cerr << "Failed to open the file." << std::endl;
 	}
+	//벡터에서 필요한 데이터 추출
+	//std::cout << "vect size is " << ssd_memory.size() << std::endl;
+	data_required = ssd_memory[index];
+	//result.txt에 해당 데이터 저장
 	if (result_file.is_open()) {
 		result_file << data_required << std::endl;
 		std::cout << "Result: " << data_required << std::endl;
@@ -39,6 +49,10 @@ void SSD<uint32_t>::read(uint32_t index) {
 	else {
 		std::cerr << "Failed to open the file." << std::endl;
 	}
+	result_file.close();
+	SSD_file.close();
 
 	std::cout << "READ" << std::endl;
+
+	
 }

@@ -26,7 +26,7 @@ template <typename T>
 class SSD : public Storage<T> {
   private:
     //데이터 저장 형태: 벡터
-    std::vector<T> ssd_memory;
+    std::vector<std::string> ssd_memory;
     //txt파일 위치 주소
     //const std::string ssd_addr; -> 현재 위치에 자동으로 생성되게 만들것 (상대경로)
     
