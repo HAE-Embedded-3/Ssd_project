@@ -3,6 +3,7 @@
 #include <vector>
 #include <string>
 #include<fstream>
+#include<iomanip>
 
 
 //template <typename T> 
@@ -44,7 +45,14 @@ class SSD : public Storage<T> {
 
         //초기 상태 설정으로 수정할 것 0x00000
         for (int i = 0; i < 100; i++) {
-            write(i, 0x00000000);
+
+            if (SSD_file.is_open()) {
+                SSD_file << std::setfill('0') << std::setw(8) << std::hex << 0x00000000 << std::endl;
+            }
+            else {
+                std::cerr << "Failed to open the file." << std::endl;
+            }
+       
         }
         //파일 종료
         SSD_file.close();

@@ -8,17 +8,26 @@
 //std::fstream result_file("result.txt", std::ios::in | std::ios::out | std::ios::app);
 
 
+//void SSD<uint32_t>::write(uint32_t index, uint32_t input_data) {
+//	
+//}
+
 void SSD<uint32_t>::write(uint32_t index, uint32_t input_data) {
-	std::fstream SSD_file("nand.txt", std::ios::in | std::ios::out | std::ios::app);
+	std::fstream SSD_file("nand.txt", std::ios::in | std::ios::out);
+	std::string read_data;
 	if (SSD_file.is_open()) {
-		SSD_file << input_data << std::endl;
+		while (std::getline(SSD_file, read_data)) {
+			ssd_memory.push_back(read_data);
+		}
 	}
-	else {
-		std::cerr << "Failed to open the file." << std::endl;
+	ssd_memory[index] = std::to_string(input_data);
+	
+	for (auto revised_data : ssd_memory) {
+		SSD_file << "0x" << std::setfill('0') << std::setw(8) << std::hex << revised_data << std::endl;
 	}
 	SSD_file.close();
-	//std::cout << "WRITE" << std::endl;
 }
+
 
 //template <typename T> 
 void SSD<uint32_t>::read(uint32_t index) {
@@ -42,10 +51,10 @@ void SSD<uint32_t>::read(uint32_t index) {
 	//std::cout << "vect size is " << ssd_memory.size() << std::endl;
 	if (index < 100) {
 		data_required = ssd_memory[index];
-		//result.txt에 해당 데이터 저장
+		//result.txt에 해당 데이터 저장22
 		if (result_file.is_open()) {
-			result_file << data_required << std::endl;
-			std::cout << "Result: " << data_required << std::endl;
+			result_file << "0x" << std::setfill('0') << std::setw(8) << std::hex << data_required << std::endl;
+			std::cout << "Result: " << "0x" << std::setfill('0') << std::setw(8) << std::hex << data_required << std::endl;
 		}
 		else {
 			std::cerr << "Failed to open the file." << std::endl;
@@ -55,11 +64,10 @@ void SSD<uint32_t>::read(uint32_t index) {
 		std::cerr << "Index over 100" << std::endl;
 	}
 	
-	
 	result_file.close();
 	SSD_file.close();
-
 	//std::cout << "READ" << std::endl;
-
 	
 }
+
+//read/write 명령어 받는 함수는 앱의 영역?
